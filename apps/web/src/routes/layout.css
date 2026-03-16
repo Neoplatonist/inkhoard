@@ -1,0 +1,68 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: var(--bl-primary, #10b981);
+  --color-surface: var(--bl-surface, #ffffff);
+  --color-text: var(--bl-text, #1f2937);
+}
+
+/* Semantic color tokens — light mode defaults */
+:root {
+  /* Primary — user-selectable accent (F36-01), default emerald */
+  --bl-primary: #10b981;
+  --bl-primary-hover: #059669;
+  --bl-primary-active: #047857;
+  --bl-primary-subtle: #d1fae5;
+  --bl-primary-text: #ffffff;
+
+  /* Surface — layered backgrounds */
+  --bl-surface-0: #ffffff;
+  --bl-surface-1: #f9fafb;
+  --bl-surface-2: #f3f4f6;
+  --bl-surface-3: #e5e7eb;
+
+  /* Text */
+  --bl-text-primary: #111827;
+  --bl-text-secondary: #6b7280;
+  --bl-text-tertiary: #9ca3af;
+  --bl-text-inverse: #ffffff;
+
+  /* Border */
+  --bl-border: #e5e7eb;
+  --bl-border-focus: var(--bl-primary);
+  --bl-border-subtle: #f3f4f6;
+
+  /* Status */
+  --bl-success: #22c55e;
+  --bl-warning: #f59e0b;
+  --bl-error: #ef4444;
+  --bl-info: #3b82f6;
+
+  /* Annotation highlight colors (F12-16) */
+  --bl-highlight-yellow: #fef08a;
+  --bl-highlight-green: #bbf7d0;
+  --bl-highlight-pink: #fbcfe8;
+  --bl-highlight-red: #fecaca;
+
+  /* Font stacks */
+  --bl-font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --bl-font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", monospace;
+  --bl-font-serif: "Merriweather", Georgia, "Times New Roman", serif;
+}
+
+/* Dark mode — toggled via .dark class on <html> (F36-03) */
+:root.dark {
+  --bl-surface-0: #0f172a;
+  --bl-surface-1: #1e293b;
+  --bl-surface-2: #334155;
+  --bl-surface-3: #475569;
+
+  --bl-text-primary: #f1f5f9;
+  --bl-text-secondary: #94a3b8;
+  --bl-text-tertiary: #64748b;
+
+  --bl-border: #334155;
+  --bl-border-subtle: #1e293b;
+
+  --bl-primary-subtle: rgba(16, 185, 129, 0.15);
+}
