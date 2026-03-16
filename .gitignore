@@ -46,3 +46,18 @@ venv/
 
 # Test artifacts
 *.lcov
+
+# SvelteKit / Vite
+.svelte-kit/
+.vite/
+
+# Elixir / Phoenix
+.elixir_ls/
+.mix/
+_build/
+deps/
+cover/
+doc/
+.fetch
+erl_crash.dump
+*.ez
