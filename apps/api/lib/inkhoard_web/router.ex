@@ -5,6 +5,14 @@ defmodule InkHoardWeb.Router do
     plug :accepts, ["json"]
   end
 
+  scope "/", InkHoardWeb do
+    pipe_through :api
+
+    get "/healthcheck", HealthController, :index
+    get "/healthcheck/live", HealthController, :live
+    get "/healthcheck/ready", HealthController, :ready
+  end
+
   scope "/api", InkHoardWeb do
     pipe_through :api
   end

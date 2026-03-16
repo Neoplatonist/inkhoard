@@ -12,6 +12,7 @@ defmodule InkHoard.Application do
       InkHoard.Repo,
       {DNSCluster, query: Application.get_env(:inkhoard, :dns_cluster_query) || :ignore},
       {Phoenix.PubSub, name: InkHoard.PubSub},
+      {Oban, Application.fetch_env!(:inkhoard, Oban)},
       # Start a worker by calling: InkHoard.Worker.start_link(arg)
       # {InkHoard.Worker, arg},
       # Start to serve requests, typically the last entry
