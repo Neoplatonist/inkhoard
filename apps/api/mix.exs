@@ -50,7 +50,28 @@ defmodule InkHoard.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.2.0"},
       {:bandit, "~> 1.5"},
-      {:oban, "~> 2.20"}
+      {:oban, "~> 2.20"},
+      {:guardian, "~> 2.4"},
+      {:joken, "~> 2.6"},
+      {:cachex, "~> 4.1"},
+      {:hammer, "~> 7.2"},
+      {:req, "~> 0.5.17"},
+      {:swoosh, "~> 1.23"},
+      {:vix, "~> 0.38.0"},
+      {:prom_ex, "~> 1.11"},
+      {:corsica, "~> 2.1"},
+      {:floki, "~> 0.38.0"},
+      {:sweet_xml, "~> 0.7.5"},
+      {:saxy, "~> 1.6"},
+      {:xml_builder, "~> 2.4"},
+      {:nimble_pool, "~> 1.1"},
+      {:bcrypt_elixir, "~> 3.3"},
+      {:ex_aws, "~> 2.6"},
+      {:ex_aws_s3, "~> 2.5"},
+      {:ex_machina, "~> 2.8", only: :test},
+      {:mox, "~> 1.2", only: :test},
+      {:stream_data, "~> 1.3", only: :test},
+      {:credo, "~> 1.7", only: [:dev, :test], runtime: false}
     ]
   end
 
