@@ -7,7 +7,7 @@ import Config
 # Run `mix help test` for more information.
 config :inkhoard, InkHoard.Repo,
   username: "postgres",
-  password: "postgres",
+  password: "getInked",
   hostname: "localhost",
   database: "inkhoard_test#{System.get_env("MIX_TEST_PARTITION")}",
   pool: Ecto.Adapters.SQL.Sandbox,
