@@ -3,6 +3,9 @@ defmodule InkHoard.ExtensionsTest do
   # with other DB-mutating tests.
   use InkHoard.DataCase, async: false
 
+  alias Ecto.Adapters.SQL
+  alias InkHoard.Repo
+
   # These three extensions are required before any application table is
   # created.  See design-schema.md §3.6 and migration phase 0.
   @required_extensions ~w[uuid-ossp unaccent pg_trgm]
@@ -10,8 +13,8 @@ defmodule InkHoard.ExtensionsTest do
   describe "PostgreSQL extensions (migration phase 0)" do
     test "all required extensions are enabled in the database" do
       %{rows: rows} =
-        Ecto.Adapters.SQL.query!(
-          InkHoard.Repo,
+        SQL.query!(
+          Repo,
           "SELECT extname FROM pg_extension",
           []
         )
@@ -28,8 +31,8 @@ defmodule InkHoard.ExtensionsTest do
     test "uuid-ossp provides gen_random_uuid() or uuid_generate_v4()" do
       # Smoke-test that the extension is functional, not just registered.
       %{rows: [[uuid]]} =
-        Ecto.Adapters.SQL.query!(
-          InkHoard.Repo,
+        SQL.query!(
+          Repo,
           "SELECT uuid_generate_v4()",
           []
         )
@@ -43,8 +46,8 @@ defmodule InkHoard.ExtensionsTest do
 
     test "unaccent() strips diacritics from accented characters" do
       %{rows: [[result]]} =
-        Ecto.Adapters.SQL.query!(
-          InkHoard.Repo,
+        SQL.query!(
+          Repo,
           "SELECT unaccent('résumé')",
           []
         )
@@ -55,8 +58,8 @@ defmodule InkHoard.ExtensionsTest do
 
     test "pg_trgm provides similarity() function" do
       %{rows: [[score]]} =
-        Ecto.Adapters.SQL.query!(
-          InkHoard.Repo,
+        SQL.query!(
+          Repo,
           "SELECT similarity('abc', 'abc')",
           []
         )

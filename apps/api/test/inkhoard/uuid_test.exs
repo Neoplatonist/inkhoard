@@ -48,11 +48,12 @@ defmodule InkHoard.UUIDTest do
     end
 
     test "a sequence of 50 UUIDs generated 2ms apart is strictly increasing" do
-      uuids = Enum.map(1..50, fn _ ->
-        uuid = InkHoard.UUID.generate()
-        Process.sleep(2)
-        uuid
-      end)
+      uuids =
+        Enum.map(1..50, fn _ ->
+          uuid = InkHoard.UUID.generate()
+          Process.sleep(2)
+          uuid
+        end)
 
       sorted = Enum.sort(uuids)
 
