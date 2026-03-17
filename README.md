@@ -19,39 +19,61 @@ Organize, read, annotate, sync across devices, and share — all without relying
 
 InkHoard is a fork of [BookLore](https://github.com/booklore-app/booklore), rewritten from the ground up using a new technology stack:
 
-| Layer | Technology |
-|:---|:---|
-| **Backend** | Elixir / Phoenix |
-| **Frontend** | SvelteKit / Svelte 5 |
-| **Database** | PostgreSQL |
-| **Deployment** | Docker / Podman |
+| Layer          | Technology           |
+| :------------- | :------------------- |
+| **Backend**    | Elixir / Phoenix     |
+| **Frontend**   | SvelteKit / Svelte 5 |
+| **Database**   | PostgreSQL           |
+| **Deployment** | Docker / Podman      |
 
 ---
 
 ## Features
 
-| | Feature | Description |
-|:---:|:---|:---|
-| 📚 | **Smart Shelves** | Custom and dynamic shelves with rule-based Magic Shelves, filters, and full-text search |
-| 🔍 | **Automatic Metadata** | Covers, descriptions, reviews, and ratings pulled from Google Books, Open Library, and Amazon — all editable |
-| 📖 | **Built-in Readers** | Open EPUBs, PDFs, comics (CBZ/CBR), and audiobooks right in the browser with annotations, highlights, and reading progress |
-| 🔄 | **Device Sync** | Kobo, KOReader, and OPDS-compatible apps. Your library follows you everywhere |
-| 👥 | **Multi-User** | Individual shelves, progress, and preferences per user with local or OIDC authentication |
-| 📥 | **BookDrop** | Drop files into a watched folder — InkHoard detects, enriches, and queues them for import automatically |
-| 📧 | **Email & Kindle Delivery** | Send any book to a Kindle, email address, or friend |
-| 🎨 | **Themes & i18n** | Full theme system with dark/light modes and internationalization via Paraglide-js |
-| 📊 | **Statistics** | Reading sessions, progress tracking, and analytics dashboard |
-| 🔐 | **Parental Controls** | Content restriction system for shared family libraries |
-| 📓 | **Notebook** | Unified view of annotations, bookmarks, and notes across all your books |
-| 🔔 | **Real-Time Notifications** | Live updates via Phoenix Channels for background jobs, metadata fetches, and more |
+|     | Feature                     | Description                                                                                                                |
+| :-: | :-------------------------- | :------------------------------------------------------------------------------------------------------------------------- |
+| 📚  | **Smart Shelves**           | Custom and dynamic shelves with rule-based Magic Shelves, filters, and full-text search                                    |
+| 🔍  | **Automatic Metadata**      | Covers, descriptions, reviews, and ratings pulled from Google Books, Open Library, and Amazon — all editable               |
+| 📖  | **Built-in Readers**        | Open EPUBs, PDFs, comics (CBZ/CBR), and audiobooks right in the browser with annotations, highlights, and reading progress |
+| 🔄  | **Device Sync**             | Kobo, KOReader, and OPDS-compatible apps. Your library follows you everywhere                                              |
+| 👥  | **Multi-User**              | Individual shelves, progress, and preferences per user with local or OIDC authentication                                   |
+| 📥  | **BookDrop**                | Drop files into a watched folder — InkHoard detects, enriches, and queues them for import automatically                    |
+| 📧  | **Email & Kindle Delivery** | Send any book to a Kindle, email address, or friend                                                                        |
+| 🎨  | **Themes & i18n**           | Full theme system with dark/light modes and internationalization via Paraglide-js                                          |
+| 📊  | **Statistics**              | Reading sessions, progress tracking, and analytics dashboard                                                               |
+| 🔐  | **Parental Controls**       | Content restriction system for shared family libraries                                                                     |
+| 📓  | **Notebook**                | Unified view of annotations, bookmarks, and notes across all your books                                                    |
+| 🔔  | **Real-Time Notifications** | Live updates via Phoenix Channels for background jobs, metadata fetches, and more                                          |
 
 ---
 
 ## Quick Start
 
-> **Prerequisites**: [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/)
+> **Prerequisites**: [Docker](https://docs.docker.com/get-docker/), [Elixir 1.17+](https://elixir-lang.org/install.html), [Node.js 22+](https://nodejs.org/), [pnpm](https://pnpm.io/), and `make`
 
-*Quick start instructions and Docker Compose configuration coming soon.*
+```bash
+git clone https://github.com/neoplatonist/inkhoard.git && cd inkhoard
+make setup   # starts PostgreSQL, installs deps, creates & migrates DB
+```
+
+Then in separate terminals:
+
+```bash
+make start.api   # Phoenix backend  → http://localhost:4000
+make start.web   # SvelteKit frontend → http://localhost:5173
+```
+
+### Available Make Targets
+
+| Command         | Description                             |
+| :-------------- | :-------------------------------------- |
+| `make setup`    | Full first-time setup (db + deps)       |
+| `make start`    | Start backend and frontend              |
+| `make test`     | Run all tests (backend + frontend)      |
+| `make lint`     | Format check, Credo, Svelte check       |
+| `make db`       | Start PostgreSQL container              |
+| `make db.reset` | Drop and recreate the database          |
+| `make clean`    | Stop containers, remove build artifacts |
 
 ---
 
