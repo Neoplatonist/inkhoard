@@ -1,5 +1,5 @@
 [
-  import_deps: [:ecto, :ecto_sql, :phoenix],
+  import_deps: [:ecto, :ecto_sql, :phoenix, :uniq],
   subdirectories: ["priv/*/migrations"],
   inputs: [
     "*.{ex,exs}",

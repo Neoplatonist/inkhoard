@@ -23,7 +23,8 @@ defmodule InkHoard.DepsTest do
     :nimble_pool,
     :bcrypt_elixir,
     :ex_aws,
-    :ex_aws_s3
+    :ex_aws_s3,
+    :uniq
   ]
 
   @test_only_apps [:ex_machina, :mox, :stream_data]

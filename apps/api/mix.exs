@@ -66,6 +66,7 @@ defmodule InkHoard.MixProject do
       {:xml_builder, "~> 2.4"},
       {:nimble_pool, "~> 1.1"},
       {:bcrypt_elixir, "~> 3.3"},
+      {:uniq, "~> 0.6"},
       {:ex_aws, "~> 2.6"},
       {:ex_aws_s3, "~> 2.5"},
       {:ex_machina, "~> 2.8", only: :test},
