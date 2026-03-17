@@ -47,12 +47,18 @@ jobs:
       - name: Cache deps
         uses: actions/cache@v4
         with:
-          path: |
-            apps/api/deps
-            apps/api/_build
-          key: mix-${{ runner.os }}-${{ env.ELIXIR_VERSION }}-${{ env.OTP_VERSION }}-${{ hashFiles('apps/api/mix.lock', 'apps/api/mix.exs') }}
+          path: apps/api/deps
+          key: mix-deps-${{ runner.os }}-${{ env.ELIXIR_VERSION }}-${{ env.OTP_VERSION }}-${{ hashFiles('apps/api/mix.lock') }}
           restore-keys: |
-            mix-${{ runner.os }}-${{ env.ELIXIR_VERSION }}-${{ env.OTP_VERSION }}-
+            mix-deps-${{ runner.os }}-${{ env.ELIXIR_VERSION }}-${{ env.OTP_VERSION }}-
+
+      - name: Cache build
+        # No restore-keys: _build must match exactly so that a changed mix.exs
+        # (e.g. updated test_coverage threshold) always triggers a fresh compile.
+        uses: actions/cache@v4
+        with:
+          path: apps/api/_build
+          key: mix-build-${{ runner.os }}-${{ env.ELIXIR_VERSION }}-${{ env.OTP_VERSION }}-${{ hashFiles('apps/api/mix.lock', 'apps/api/mix.exs') }}
 
       - name: Cache Dialyzer PLTs
         uses: actions/cache@v4
