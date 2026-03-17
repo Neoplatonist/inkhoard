@@ -11,7 +11,7 @@ defmodule InkHoard.MixProject do
       aliases: aliases(),
       deps: deps(),
       listeners: [Phoenix.CodeReloader],
-      test_coverage: [threshold: 80]
+      test_coverage: [summary: [threshold: 80]]
     ]
   end
 
