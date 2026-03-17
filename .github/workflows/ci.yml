@@ -50,7 +50,7 @@ jobs:
           path: |
             apps/api/deps
             apps/api/_build
-          key: mix-${{ runner.os }}-${{ env.ELIXIR_VERSION }}-${{ env.OTP_VERSION }}-${{ hashFiles('apps/api/mix.lock') }}
+          key: mix-${{ runner.os }}-${{ env.ELIXIR_VERSION }}-${{ env.OTP_VERSION }}-${{ hashFiles('apps/api/mix.lock', 'apps/api/mix.exs') }}
           restore-keys: |
             mix-${{ runner.os }}-${{ env.ELIXIR_VERSION }}-${{ env.OTP_VERSION }}-
 
