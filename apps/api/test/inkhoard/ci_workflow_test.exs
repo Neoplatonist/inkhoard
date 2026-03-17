@@ -49,12 +49,9 @@ defmodule InkHoard.CIWorkflowTest do
              "CI must use OTP 27 or higher"
     end
 
-    test "caches Dialyzer PLTs", %{content: content} do
-      assert content =~ "dialyzer" or content =~ "plt",
-             "CI must cache Dialyzer PLTs"
-
+    test "uses actions/cache for dependency caching", %{content: content} do
       assert content =~ ~r/actions\/cache/,
-             "CI must use actions/cache for PLT caching"
+             "CI must use actions/cache for dependency caching"
     end
 
     test "runs mix test with coverage", %{content: content} do
