@@ -1,4 +1,12 @@
 defmodule InkHoard.Libraries.Library do
+  @moduledoc """
+  Schema for a library — a named collection of books backed by filesystem paths.
+
+  Libraries are tenant-scoped and require at least one `LibraryPath` on
+  creation (enforced by `create_changeset/2`). Use `changeset/2` for
+  updates to the library's own fields without touching paths.
+  """
+
   use InkHoard.Schema
   import Ecto.Changeset
 

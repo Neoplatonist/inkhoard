@@ -1,8 +1,19 @@
 defmodule InkHoard.Libraries do
   @moduledoc """
-  Context for managing libraries and their paths.
+  Context for managing libraries, library paths, and user access.
 
-  Handles library creation and lookup, as well as library path management.
+  A library is a named container for books backed by one or more filesystem
+  paths (`LibraryPath`). Access is controlled per-user via `LibraryUser`
+  join records; admin users bypass access checks and see all libraries.
+
+  ## Functions
+
+    * CRUD — `create_library/1`, `get_library/1`, `update_library/2`, `delete_library/1`
+    * Listing — `list_libraries_for_user/1`
+    * Access control — `grant_access/2`, `revoke_access/2`
+
+  > Adding and removing paths on an existing library (`add_library_path/2`,
+  > `remove_library_path/2`) is deferred to Story 3.7.
   """
 
   import Ecto.Query

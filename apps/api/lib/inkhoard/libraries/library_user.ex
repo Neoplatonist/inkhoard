@@ -1,4 +1,12 @@
 defmodule InkHoard.Libraries.LibraryUser do
+  @moduledoc """
+  Join schema granting a user access to a library.
+
+  Uses a composite primary key `(library_id, user_id)` with no separate `id`
+  column. Admin users bypass this table entirely — access checks are handled
+  in `InkHoard.Libraries`.
+  """
+
   use InkHoard.Schema
   import Ecto.Changeset
 

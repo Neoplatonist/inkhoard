@@ -1,4 +1,15 @@
 defmodule InkHoard.Libraries.LibraryPath do
+  @moduledoc """
+  Schema for a filesystem path belonging to a library.
+
+  Paths must be absolute (enforced by changeset validation and DB constraint).
+  Two changesets are provided:
+
+    * `changeset/2` — full validation including `library_id`, used for direct inserts
+    * `path_only_changeset/2` — path fields only, used when building paths through
+      the parent `Library` association via `put_assoc` (Ecto assigns the FK automatically)
+  """
+
   use InkHoard.Schema
   import Ecto.Changeset
 
