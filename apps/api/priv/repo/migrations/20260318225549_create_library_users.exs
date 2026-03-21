@@ -3,8 +3,14 @@ defmodule InkHoard.Repo.Migrations.CreateLibraryUsers do
 
   def change do
     create table(:library_users, primary_key: false) do
-      add :library_id, references(:libraries, type: :uuid, on_delete: :delete_all), null: false, primary_key: true
-      add :user_id, references(:users, type: :uuid, on_delete: :delete_all), null: false, primary_key: true
+      add :library_id, references(:libraries, type: :uuid, on_delete: :delete_all),
+        null: false,
+        primary_key: true
+
+      add :user_id, references(:users, type: :uuid, on_delete: :delete_all),
+        null: false,
+        primary_key: true
+
       add :tenant_id, :integer, null: false, default: 1
     end
 
