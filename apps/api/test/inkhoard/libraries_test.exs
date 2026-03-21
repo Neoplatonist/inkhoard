@@ -104,9 +104,7 @@ defmodule InkHoard.LibrariesTest do
     test "admin users see all libraries regardless of access records" do
       {:ok, user} = Accounts.create_user(valid_user_attrs())
 
-      Repo.delete_all(
-        from(p in LibraryUser, where: p.user_id == ^user.id)
-      )
+      Repo.delete_all(from(p in LibraryUser, where: p.user_id == ^user.id))
 
       permission = Repo.get_by!(InkHoard.Accounts.UserPermission, user_id: user.id)
       Repo.update!(Ecto.Changeset.change(permission, admin: true))
